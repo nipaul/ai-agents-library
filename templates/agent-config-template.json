@@ -1,0 +1,36 @@
+{
+  "agent": {
+    "name": "Agent Name",
+    "version": "1.0.0",
+    "description": "Brief description of what this agent does",
+    "purpose": "Specific outcome or goal this agent achieves",
+    "created": "YYYY-MM-DD",
+    "last_updated": "YYYY-MM-DD",
+    "author": "Your Name",
+    "tags": [
+      "tag1",
+      "tag2",
+      "tag3"
+    ]
+  },
+  "system_prompt": {
+    "file": "system-prompt.md",
+    "version": "1.0.0",
+    "last_updated": "YYYY-MM-DD"
+  },
+  "user_prompts": [
+    {
+      "name": "prompt_name_1",
+      "file": "user-prompt-1.md",
+      "description": "What this prompt is used for",
+      "use_case": "Specific scenario or outcome",
+      "version": "1.0.0"
+    }
+  ],
+  "templates_used": [
+    "template_name_1",
+    "template_name_2"
+  ],
+  "dependencies": [],
+  "notes": "Any additional notes or considerations"
+}

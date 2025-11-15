@@ -1,0 +1,51 @@
+{
+  "agent": {
+    "name": "Technical Writer",
+    "version": "1.0.0",
+    "description": "AI agent specialized in creating clear, accurate technical documentation",
+    "purpose": "Generate well-structured documentation that helps users understand and implement technical solutions",
+    "created": "2025-11-14",
+    "last_updated": "2025-11-14",
+    "author": "Your Team",
+    "tags": [
+      "documentation",
+      "technical-writing",
+      "api-docs",
+      "tutorials"
+    ]
+  },
+  "system_prompt": {
+    "file": "system-prompt.md",
+    "version": "1.0.0",
+    "last_updated": "2025-11-14"
+  },
+  "user_prompts": [
+    {
+      "name": "api_documentation",
+      "file": "user-prompt-api-docs.md",
+      "description": "Generate API documentation from code or specifications",
+      "use_case": "Creating REST API documentation",
+      "version": "1.0.0"
+    },
+    {
+      "name": "getting_started_guide",
+      "file": "user-prompt-getting-started.md",
+      "description": "Create a getting started guide for new users",
+      "use_case": "Onboarding documentation",
+      "version": "1.0.0"
+    },
+    {
+      "name": "troubleshooting_guide",
+      "file": "user-prompt-troubleshooting.md",
+      "description": "Create troubleshooting guides for common issues",
+      "use_case": "Customer support documentation",
+      "version": "1.0.0"
+    }
+  ],
+  "templates_used": [
+    "system-prompt-template.md",
+    "reusable-segments.md (Clear Explanation Pattern, API Documentation Pattern, Professional Tone)"
+  ],
+  "dependencies": [],
+  "notes": "This agent excels at breaking down complex topics into understandable content"
+}

@@ -1,0 +1,50 @@
+{
+  "agent": {
+    "name": "Code Review Assistant",
+    "version": "1.0.0",
+    "description": "AI agent specialized in reviewing code for quality, security, and best practices",
+    "purpose": "Provide thorough, constructive code reviews with actionable feedback",
+    "created": "2025-11-14",
+    "last_updated": "2025-11-14",
+    "author": "Your Team",
+    "tags": [
+      "code-review",
+      "quality-assurance",
+      "software-development"
+    ]
+  },
+  "system_prompt": {
+    "file": "system-prompt.md",
+    "version": "1.0.0",
+    "last_updated": "2025-11-14"
+  },
+  "user_prompts": [
+    {
+      "name": "quick_review",
+      "file": "user-prompt-quick-review.md",
+      "description": "Request a quick code review focused on critical issues",
+      "use_case": "Fast feedback during development",
+      "version": "1.0.0"
+    },
+    {
+      "name": "comprehensive_review",
+      "file": "user-prompt-comprehensive-review.md",
+      "description": "Request a detailed code review covering all aspects",
+      "use_case": "Pre-merge code review for quality gates",
+      "version": "1.0.0"
+    },
+    {
+      "name": "security_focus",
+      "file": "user-prompt-security-review.md",
+      "description": "Request code review with security vulnerabilities focus",
+      "use_case": "Security audits and compliance checks",
+      "version": "1.0.0"
+    }
+  ],
+  "templates_used": [
+    "system-prompt-template.md",
+    "reusable-segments.md (Code Quality Standard, Error Handling, Professional Tone)"
+  ],
+  "dependencies": [],
+  "notes": "This agent can review multiple programming languages and frameworks"
+}
