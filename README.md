@@ -80,6 +80,24 @@ To use an agent:
 3. Choose the appropriate `user-prompt-*.md` file for your use case
 4. Customize with your specific details
 
+### 🏃 Running and Testing Agents
+
+To actually **run and test** agents with AI models:
+
+**📖 Start with the [Running and Testing Agents Guide](./examples/running-and-testing-agents.md)** - it includes:
+- Python and JavaScript code examples
+- Setup instructions for OpenAI API and other services
+- How to test different agent variants
+- Best practices for validation and monitoring
+- Troubleshooting common issues
+
+**⚡ Quick Start** (60 seconds):
+1. Install: `pip install openai`
+2. Set API key: `$env:OPENAI_API_KEY="your-key"`
+3. Run: `python examples/test_agent.py`
+
+See [examples/QUICK_START.md](./examples/QUICK_START.md) for common commands and examples.
+
 ## 📄 File Types
 
 ### System Prompts (`system-prompt.md`)
