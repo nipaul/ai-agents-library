@@ -13,12 +13,17 @@ Requirements:
 """
 
 import os
+import sys
 import json
 import argparse
 from pathlib import Path
 
 try:
     import openai
+    try:
+        from openai import RateLimitError, AuthenticationError, APIConnectionError
+    except Exception:
+        RateLimitError = AuthenticationError = APIConnectionError = Exception
 except ImportError:
     print("❌ Error: openai package not installed")
     print("Install it with: pip install openai")
@@ -33,6 +38,28 @@ def load_prompt(file_path):
     except FileNotFoundError:
         print(f"❌ Error: File not found: {file_path}")
         exit(1)
+
+
+def load_env_file_if_missing(env_path=".env"):
+    """Load key values from a .env file if OPENAI_API_KEY is missing."""
+    if os.environ.get("OPENAI_API_KEY"):
+        return
+    if not Path(env_path).exists():
+        return
+    try:
+        with open(env_path, 'r', encoding='utf-8') as f:
+            for raw_line in f:
+                line = raw_line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, value = line.split("=", 1)
+                key = key.strip()
+                value = value.strip().strip('"').strip("'")
+                if key and key not in os.environ:
+                    os.environ[key] = value
+    except Exception:
+        # Best-effort only; environment can still be set manually.
+        pass
 
 
 def load_agent_config(agent_name):
@@ -69,6 +96,9 @@ def get_user_prompt_file(agent_name, variant):
 
 def run_agent(system_prompt, user_prompt, model="gpt-3.5-turbo", temperature=0.7):
     """Run an agent with given prompts using OpenAI API"""
+    load_env_file_if_missing()
+    if not openai.api_key:
+        openai.api_key = os.environ.get("OPENAI_API_KEY")
     if not openai.api_key:
         print("❌ Error: OPENAI_API_KEY environment variable not set")
         print("Set it with:")
@@ -78,7 +108,7 @@ def run_agent(system_prompt, user_prompt, model="gpt-3.5-turbo", temperature=0.7
         exit(1)
     
     try:
-        response = openai.ChatCompletion.create(
+        response = openai.chat.completions.create(
             model=model,
             temperature=temperature,
             messages=[
@@ -87,11 +117,14 @@ def run_agent(system_prompt, user_prompt, model="gpt-3.5-turbo", temperature=0.7
             ]
         )
         return response.choices[0].message.content
-    except openai.error.RateLimitError:
+    except RateLimitError:
         print("❌ Error: Rate limit exceeded. Wait a moment and try again.")
         exit(1)
-    except openai.error.AuthenticationError:
+    except AuthenticationError:
         print("❌ Error: Invalid API key. Check your OPENAI_API_KEY.")
+        exit(1)
+    except APIConnectionError:
+        print("❌ Error: Connection error. Check network access or proxy settings.")
         exit(1)
     except Exception as e:
         print(f"❌ Error: {e}")
@@ -112,6 +145,12 @@ def print_agent_info(agent_name):
 
 
 def main():
+    # Ensure UTF-8 output for emoji and non-ASCII text on Windows consoles.
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
     parser = argparse.ArgumentParser(
         description="Run and test AI agents from this repository",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -131,7 +170,7 @@ Examples:
     )
     parser.add_argument(
         "--variant",
-        default="quick-review",
+        default="quick_review",
         help="User prompt variant to use (default: quick-review)"
     )
     parser.add_argument(

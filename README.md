@@ -42,6 +42,10 @@ ai-agents-prompts/
 
 ## 🚀 Quick Start
 
+### Working With This Repo
+
+Before making changes, read `AGENTS.md` for repository-specific guidance on structure, naming, and update workflow.
+
 ### Adding a New Agent
 
 1. **Create a new directory** in `agents/`:

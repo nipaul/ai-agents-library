@@ -190,6 +190,23 @@ As you use this repository, consider:
 4. Should agents have dependencies documented?
 5. How will you track agent performance/effectiveness?
 
+## Latest Revision Details
+
+Updates made on February 23, 2026:
+- Added repository-specific contributor guidance in `AGENTS.md`.
+- Updated `README.md` to point contributors to `AGENTS.md` before making changes.
+- Improved `examples/test_agent.py` to load `.env` when `OPENAI_API_KEY` is missing.
+- Ensured UTF-8 console output on Windows to avoid emoji encoding errors.
+- Updated OpenAI SDK exception handling to align with current client behavior.
+- Validation note: Running `examples/test_agent.py` now fails with a connection error if outbound network access is blocked.
+
+## Version History
+
+| Date | Changes |
+|------|---------|
+| 2026-02-23 | Added `AGENTS.md`, updated `README.md` guidance, and hardened `examples/test_agent.py` environment loading and error handling. |
+| 2025-11-14 | Initial repository created with example agents, templates, and documentation. |
+
 ---
 
 **Repository created**: November 14, 2025  
