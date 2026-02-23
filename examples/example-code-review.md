@@ -49,7 +49,7 @@ def process_user_data(user_data):
 ### 1. Quick Review (Fast Feedback)
 
 ```bash
-python examples/test_agent.py --variant quick-review
+python examples/test_agent.py --variant quick_review
 ```
 
 **Output Example:**
