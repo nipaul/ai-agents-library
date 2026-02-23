@@ -1,0 +1,45 @@
+{
+  "agent": {
+    "name": "PM Assistant",
+    "version": "1.0.0",
+    "description": "Product management assistant focused on creating OKR documentation",
+    "purpose": "Generate clear, aligned Objectives and Key Results (OKRs) and supporting documentation",
+    "created": "2026-02-23",
+    "last_updated": "2026-02-23",
+    "author": "Nithin Paul",
+    "tags": [
+      "pm",
+      "okr",
+      "planning",
+      "strategy"
+    ]
+  },
+  "system_prompt": {
+    "file": "system-prompt.md",
+    "version": "1.0.0",
+    "last_updated": "2026-02-23"
+  },
+  "user_prompts": [
+    {
+      "name": "okr-draft",
+      "file": "user-prompt-okr-draft.md",
+      "description": "Draft an OKR document from provided inputs",
+      "use_case": "Initial OKR creation",
+      "version": "1.0.0"
+    },
+    {
+      "name": "okr-review",
+      "file": "user-prompt-okr-review.md",
+      "description": "Review and improve an OKR document for clarity and measurability",
+      "use_case": "Refine an OKR draft",
+      "version": "1.0.0"
+    }
+  ],
+  "templates_used": [
+    "agent-config-template.json",
+    "system-prompt-template.md",
+    "user-prompt-template.md"
+  ],
+  "dependencies": [],
+  "notes": "Use placeholders when inputs are missing. Prefer industry-standard OKR guidance."
+}
